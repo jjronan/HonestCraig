@@ -25,6 +25,8 @@ session_start();
             <div class="navbar-nav">
                 <a class="nav-item nav-link" href="Signup.php">Sign up</a>
                 <a class="nav-item nav-link" href="login.php">Log in</a>
+                <a class="nav-item nav-link" href="sell.php">Sell</a>
+                <a class="nav-item nav-link" href="account.php">Account</a>
             </div>
         </div>
     </nav>
