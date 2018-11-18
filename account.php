@@ -9,10 +9,46 @@ $con=mysqli_connect("localhost","root","","honestcraig_db");
       {
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
       }
+ 
 
+// If session variable is not set it will redirect to login page
+
+if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
+
+  header("location: login.php");
+
+  exit;
+
+}
 
 ?>
 
+
+<?php
+	$user = ($_SESSION['username']);
+
+	//$sql = "SELECT id from users where username='$user';";
+    //$result = mysqli_query($con,$sql);
+    //$row = mysqli_fetch_array($result);
+    //$user_id = $row['id'];
+    
+
+
+
+	//$sql = "SELECT * from reservation where reservation.id = '$user_id';";
+    //$result = mysqli_query($con,$sql);
+    //$row = mysqli_fetch_array($result);
+    //$res_id = $row['res_id'];
+    //$movie_title = $row['movie_title'];
+    //$num_tickets = $row['res_tickets'];
+    //$movie_id = $row['movie_id'];
+
+
+    //echo $user_id. "<br>";
+    //echo $movie_title . "<br>";
+    //echo $res_id . "<br>";
+    //echo $num_tickets . "<br>";
+?>
 
 
 <!DOCTYPE html>
@@ -122,40 +158,49 @@ $con=mysqli_connect("localhost","root","","honestcraig_db");
 
       <div class="container">
         <?php
-            //$sql = "SELECT * from listings where product_category = 'Aquatics';";
-            $sql = "SELECT * from listings, users_ratings where product_category = 'Aquatics' AND listings.username=users_ratings.username;";
+
+            $sql = "SELECT * from listings where listings.username = '$user';";
             $query = mysqli_query($con,$sql);
         ?>
+
+
+
         <div class="tg-wrap"><table class="tg" style="undefined;table-layout: fixed; width: 331px">
         <colgroup>
-        <col style="width: 100px">
-        <col style="width: 200px">
-        <col style="width: 149px">
+        <col style="width: 54px">
+        <col style="width: 128px">
         <col style="width: 149px">
         <col style="width: 149px">
         </colgroup>
           <tr>
-            <th class="tg-yw4l">Product</th>
-            <th class="tg-baqh">Product Description</th>
+            <th class="tg-yw4l">ID</th>
+            <th class="tg-baqh">Category</th>
+            <th class="tg-baqh">Product</th>
             <th class="tg-baqh">Price</th>
-            <th class="tg-baqh">Seller</th>
-            <th class="tg-baqh">Seller's Rating</th>
           </tr>
           <?php
      
                while ($row = mysqli_fetch_array($query)) {
                    echo "<tr>";
+                   echo "<td>".$row['id']."</td>";
+                   echo "<td>".$row['product_category']."</td>";
                    echo "<td>".$row['product']."</td>";
-                   echo "<td>".$row['product_desc']."</td>";
                    echo "<td>".$row['product_price']."</td>";
-                   echo "<td>".$row['username']."</td>";
-                   echo "<td>".$row['rating']."</td>";
                    echo "</tr>";
                }
             ?>
-        </table>
-            
+        </table></div> 
+        <div>
+            <center>
+              <h3>Cancel Listing</h3>
+            <form action="cancel.php" method="post">
+                <input type="text" name="id" placeholder="Enter ID">
+                <br><br>
+                <input type="submit" class="btn btn-success">
+            </form>
+            </center>
         </div>
+        <br>
 
       </div>
 
@@ -169,7 +214,7 @@ $con=mysqli_connect("localhost","root","","honestcraig_db");
 
       <div class="container">
 
-        <p class="m-0 text-center text-white">Copyrighted by Popped!<sup>&copy;</sup></p>
+        <p class="m-0 text-center text-white">Copyrighted by HonestCraig<sup>&copy;</sup></p>
 
         <p class="m-0 text-center text-white">Logged in as: <?php echo htmlspecialchars($_SESSION['username']); ?></p>
 
@@ -189,7 +234,7 @@ $con=mysqli_connect("localhost","root","","honestcraig_db");
 
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <script>
+          <script>
       $(document).ready(function(){
           $('[data-toggle="tooltip"]').tooltip();   
       });
