@@ -9,10 +9,27 @@ $con=mysqli_connect("localhost","root","","honestcraig_db");
       {
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
       }
+ 
 
+// If session variable is not set it will redirect to login page
+
+if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
+
+  header("location: login.php");
+
+  exit;
+
+}
 
 ?>
 
+
+<?php
+	$user = ($_SESSION['username']);
+  $id = ($_POST["id"]);
+  $sql = "DELETE FROM listings WHERE id = '$id' AND username = '$user';";
+  mysqli_query($con,$sql);
+?>
 
 
 <!DOCTYPE html>
@@ -33,18 +50,10 @@ $con=mysqli_connect("localhost","root","","honestcraig_db");
 
     <meta name="author" content="">
 
-    <style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;border-color:#999;margin:0px auto;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 20px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#999;color:#fff;background-color:#26ADE4;}
-.tg .tg-baqh{text-align:center;vertical-align:center}
-.tg .tg-cx4s{background-color:#f7fdfa;text-align:center;vertical-align:center}
-.tg .tg-yw4l{vertical-align:top}
-@media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;margin: auto 0px;}}</style>
     
 
 
-    <title>HonestCraig</title>
+    <title>Popped</title>
 
 
 
@@ -111,59 +120,34 @@ $con=mysqli_connect("localhost","root","","honestcraig_db");
     <!-- Page Content -->
 
     <div class="container">
-
+        
 
 
       <!-- Page Heading -->
-
-      <center><h2>Current Home Listings</h2></center>
-
-
-
       <div class="container">
-        <?php
-            //$sql = "SELECT * from listings where product_category = 'Aquatics';";
-            $sql = "SELECT * from listings, users_ratings where product_category = 'Home' AND listings.username=users_ratings.username;";
-            $query = mysqli_query($con,$sql);
-        ?>
-        <div class="tg-wrap"><table class="tg" style="undefined;table-layout: fixed; width: 331px">
-        <colgroup>
-        <col style="width: 100px">
-        <col style="width: 200px">
-        <col style="width: 149px">
-        <col style="width: 149px">
-        <col style="width: 149px">
-        </colgroup>
-          <tr>
-            <th class="tg-yw4l">Product</th>
-            <th class="tg-baqh">Product Description</th>
-            <th class="tg-baqh">Price</th>
-            <th class="tg-baqh">Seller</th>
-            <th class="tg-baqh">Seller's Rating</th>
-          </tr>
-          <?php
-     
-               while ($row = mysqli_fetch_array($query)) {
-                   echo "<tr>";
-                   echo "<td>".$row['product']."</td>";
-                   echo "<td>".$row['product_desc']."</td>";
-                   echo "<td>".$row['product_price']."</td>";
-                   echo "<td>".$row['username']."</td>";
-                   echo "<td>".$row['rating']."</td>";
-                   echo "</tr>";
-               }
-            ?>
-        </table>
-            
-        </div>
-
+        <br>
+        <center><h1>Cancel successful</h1></center>
       </div>
 
+      <br>
+      <br>
+      <br>
+      <br>
+
     <!-- /.container -->
+    <div class="container">
+        <center>
+        <a href="account.php" class="btn btn-success" role="button">Back to account</a>
+        <br>
+        <br>
+        <br>
+        </center>
+        <br>
+    </div>
 
 
 
-<!--footer-->
+    <!--footer-->
 <nav class="navbar navbar-dark bg-dark fixed-bottom">
 
 
@@ -191,19 +175,15 @@ Copyrighted by HonestCraig<sup>&copy;
 </nav>
 
 
+
     <!-- Bootstrap core JavaScript -->
 
     <script src="vendor/jquery/jquery.min.js"></script>
 
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <script>
-      $(document).ready(function(){
-          $('[data-toggle="tooltip"]').tooltip();   
-      });
-      </script>
 
-
+  </div>
   </body>
 
 

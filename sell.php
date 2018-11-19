@@ -109,7 +109,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
 
       <!-- Page Heading -->
 
-      <h1>What are we selling today?</h1>
+      <h1 align="center">What are we selling today?</h1>
 
             <form action="confirmation.php" method="post">
             <h3>Category:
@@ -119,19 +119,24 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
                 <option value="Home">Home</option>
               </select>
             </h3>
-            <h3>Product Name:
+            <h3>Product Name:</h3>
               <input type="text" name="product_name">
-            </h3>
+            
             <h3>Product Description:</h3>
-              <textarea name="description" rows="5" cols="30"></textarea>
+              <textarea name="description" rows="5" cols="50"></textarea>
               <br>
               <h3>Product Price:
-              <input type="text" name="price">
+              <input type="text" name="price" size="5">
             </h3>
-            <input type="submit">
-
-
-            </form>
+            <br>
+            <h3>Image of product:
+            <p style="font-size:80%;"><input type="file" name="img" id="img"></p>
+            </h3>
+            <br>
+            <center><button type="submit" class="btn btn-success">Submit</button></center>
+            <br>
+            
+            
 
         </form>
 
@@ -139,23 +144,32 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
 
     </div>
 
-    <!-- Footer -->
+<!--footer-->
+<nav class="navbar navbar-dark bg-dark fixed-bottom">
 
-    <footer class="py-5 bg-dark">
 
-      <div class="container">
-
-        <p class="m-0 text-center text-white">Copyrighted by Popped!<sup>&copy;</sup></p>
-
-        <p class="m-0 text-center text-white">Logged in as: <?php echo htmlspecialchars($_SESSION['username']); ?></p>
-
-        <p align="center"><a href="logout.php" class="btn btn-danger">Sign Out</a></p>
-
-      </div>
-
-      <!-- /.container -->
-
-    </footer>
+<?php if( isset($_SESSION['username']) && !empty($_SESSION['username']) )
+{
+?>
+<div class="container text-center">
+<p class="navbar-text col-md-12 col-sm-12 col-xs-12 text-white">Copyrighted by HonestCraig<sup>&copy;</sup>
+  <br>  
+  Logged in as: <?php echo htmlspecialchars($_SESSION['username']); ?>
+  <br>
+  <a href="logout.php" class="btn btn-danger">Sign Out</a>
+</p>
+</div>
+<?php }else{ ?>
+    <div class="container text-center">
+<p class="navbar-text col-md-12 col-sm-12 col-xs-12 text-white">
+Copyrighted by HonestCraig<sup>&copy;
+<br>
+<br>
+<a href="login.php" class="btn btn-success">Sign in</a>
+</p>
+</div>
+<?php } ?>>
+</nav>
 
 
 

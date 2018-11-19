@@ -211,6 +211,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <div class="collapse navbar-collapse" id="navbarResponsive">
 
           <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+
+            <a class="nav-link" href="Index.php">Home</a>
+
+            </li>
 
             <li class="nav-item active">
 
@@ -274,7 +279,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             </div>
 
-            <p>Don't have an account? <a href="registration.php">Sign up now</a>.</p>
+            <p>Don't have an account? <a href="signup.php">Sign up now</a>.</p>
 
         </form>
 
@@ -295,7 +300,30 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
+<!--footer-->
+<nav class="navbar navbar-dark bg-dark fixed-bottom">
 
+
+<?php if( isset($_SESSION['username']) && !empty($_SESSION['username']) )
+{
+?>
+<div class="container text-center">
+<p class="navbar-text col-md-12 col-sm-12 col-xs-12 text-white">Copyrighted by HonestCraig<sup>&copy;</sup>
+  <br>  
+  Logged in as: <?php echo htmlspecialchars($_SESSION['username']); ?>
+  <br>
+  <a href="logout.php" class="btn btn-danger">Sign Out</a>
+</p>
+</div>
+<?php }else{ ?>
+    <div class="container text-center">
+<p class="navbar-text col-md-12 col-sm-12 col-xs-12 text-white">
+Copyrighted by HonestCraig<sup>&copy;
+
+</p>
+</div>
+<?php } ?>>
+</nav>
   </body>
 
 

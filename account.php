@@ -80,7 +80,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
     
 
 
-    <title>Popped</title>
+    <title>HonestCraig</title>
 
 
 
@@ -208,23 +208,32 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
 
 
 
-    <!-- Footer -->
+ <!--footer-->
+<nav class="navbar navbar-dark bg-dark fixed-bottom">
 
-    <footer class="py-5 bg-dark">
 
-      <div class="container">
-
-        <p class="m-0 text-center text-white">Copyrighted by HonestCraig<sup>&copy;</sup></p>
-
-        <p class="m-0 text-center text-white">Logged in as: <?php echo htmlspecialchars($_SESSION['username']); ?></p>
-
-        <p align="center"><a href="logout.php" class="btn btn-danger">Sign Out</a></p>
-
-      </div>
-
-      <!-- /.container -->
-
-    </footer>
+<?php if( isset($_SESSION['username']) && !empty($_SESSION['username']) )
+{
+?>
+<div class="container text-center">
+<p class="navbar-text col-md-12 col-sm-12 col-xs-12 text-white">Copyrighted by HonestCraig<sup>&copy;</sup>
+  <br>  
+  Logged in as: <?php echo htmlspecialchars($_SESSION['username']); ?>
+  <br>
+  <a href="logout.php" class="btn btn-danger">Sign Out</a>
+</p>
+</div>
+<?php }else{ ?>
+    <div class="container text-center">
+<p class="navbar-text col-md-12 col-sm-12 col-xs-12 text-white">
+Copyrighted by HonestCraig<sup>&copy;
+<br>
+<br>
+<a href="login.php" class="btn btn-success">Sign in</a>
+</p>
+</div>
+<?php } ?>>
+</nav>
 
 
 

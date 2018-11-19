@@ -16,6 +16,7 @@ session_start();
 </head>
 
 <body style="background-color:  #990000">
+<!-- Old Nav 
     <nav class="navbar navbar-expand-lg">
         <a class="navbar-brand col-9" href="index.html" style="text-align: center; font-size: 28pt">HonestCraig, Shopping Responsibly</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,9 +31,36 @@ session_start();
             </div>
         </div>
     </nav>
+    -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item ">
+              <a class="nav-link active" href="index.php">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="account.php">Account</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sell.php">Sell</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div></div>
     <div class="row" style="background-color: #b9bec1">
+    </br>
         <div class="col-2"></div>
         <div class="col-8">
+        <br>
+        <br><br>
         <h3>Welcome to Honest Craig! Where buying is as easy as selling. In the slides below you will see some of the many product categories we have. </h3>
         </div>
         <div class="col-2"></div>
@@ -45,14 +73,13 @@ session_start();
                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                         <li data-target="#myCarousel" data-slide-to="1"></li>
                         <li data-target="#myCarousel" data-slide-to="2"></li>
-                        <li data-target="#myCarousel" data-slide-to="3"></li>
                     </ol>
 
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <h3>Aquatics</h3>
-                            <img class="d-block w-100" src="photos/Aquatics/boat.jpg" alt="Aquatics">
+                            <img class="d-block w-100" src="photos/aquatics/boatHD.jpg" alt="Aquatics">
                             <a class="nav-item nav-link" href="Aquatics.php">Click here to be taken to the Aquatics Marketplace!</a>
                         </div>
 
@@ -82,17 +109,30 @@ session_start();
     </div>
 
 
+<!--footer-->
+<nav class="navbar navbar-dark bg-dark fixed-bottom">
 
-        <!-- Footer -->
-        <br>
-        <footer>
-            <div class="container">
-                <p class="m-0 text-center text-white">Copyrighted by HonestCraig<sup>&copy;</sup></p>
-                <p class="m-0 text-center text-white">Logged in as: <?php if(isset($_SESSION['username']))echo htmlspecialchars($_SESSION['username']); ?></p>
-                </br>
-                <p align="center"><a href="logout.php" class="btn btn-danger">Sign Out</a></p>
-            </div>
-        </footer>
+
+<?php if( isset($_SESSION['username']) && !empty($_SESSION['username']) )
+{
+?>
+<div class="container text-center">
+<p class="navbar-text col-md-12 col-sm-12 col-xs-12 text-white">Copyrighted by HonestCraig<sup>&copy;</sup>
+  <br>  
+  Logged in as: <?php echo htmlspecialchars($_SESSION['username']); ?>
+  <br>
+  <a href="logout.php" class="btn btn-danger">Sign Out</a>
+</p>
+</div>
+<?php }else{ ?>
+    <div class="container text-center">
+<p class="navbar-text col-md-12 col-sm-12 col-xs-12 text-white">
+Copyrighted by HonestCraig<sup>&copy;
+</p>
+</div>
+<?php } ?>>
+</nav>
+
 
 
 
