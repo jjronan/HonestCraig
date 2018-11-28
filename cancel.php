@@ -65,7 +65,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
 
     <!-- Custom styles for this template -->
 
-    <link href="css/3-col-portfolio.css" rel="stylesheet">
+    <link href="stylesheet.css" type="text/css" rel="stylesheet">
 
 
 
@@ -73,7 +73,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
 
 
 
-  <body>
+  <body style="background-color:  #990000">
 
 
 
@@ -114,6 +114,19 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
       </div>
 
     </nav>
+	
+	<div></div> <!-- Grey Header Bar -->
+		<div class="row" style="background-color: #b9bec1">
+		</br>
+			<div class="col-2"></div>
+			<div class="col-8">
+				<br>
+				<br><br>
+				<h2>Cancel Listing</h2>
+			</div>
+			<div class="col-2"></div>
+		</div>
+		<br />
 
 
 
@@ -124,26 +137,36 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
 
 
       <!-- Page Heading -->
-      <div class="container">
-        <br>
-        <center><h1>Cancel successful</h1></center>
-      </div>
+	  <div class="row" style= "background-color: #b9bec1">
+		</br>
+			<div class="col"></div>
+			
+			<div class="col">
+	  
+			  <div class="container">
+				<br>
+				<center><h1>Cancel successful</h1></center>
+			  </div>
 
-      <br>
-      <br>
-      <br>
-      <br>
+			  <br>
+			  <br>
+			  <br>
+			  <br>
 
-    <!-- /.container -->
-    <div class="container">
-        <center>
-        <a href="account.php" class="btn btn-success" role="button">Back to account</a>
-        <br>
-        <br>
-        <br>
-        </center>
-        <br>
-    </div>
+				<!-- /.container -->
+				<div class="container">
+					<center>
+					<a href="account.php" class="btn btn-success" role="button">Back to account</a>
+					<br>
+					<br>
+					<br>
+					</center>
+					<br>
+				</div>
+			</div>
+			<div class="col"></div>
+		</div>
+	</div>
 
 
 
